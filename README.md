@@ -23,7 +23,7 @@
   - `COPY . /app` - put all code from the root on local machine into container folder named __app__.
 - `RUN` - specify which command should be run inside the container, when image is build. fe `RUN npm install`.
 - `CMD` - this line will be executed when container is running. fe `CMD ["node", "server.js"]`. Without this line CMD of based image will be executed. This line should be ALWAYS the last line in the dockerfile.
-- `EXPOSE` - let docker know what port shout be expose from container to local system.
+- `EXPOSE` - let docker know what port shout be expose from container to local system. Doesn't do anything. Only for documentation purposes.
 - `WORKDIR` - by default all commands run in the container's root folder. WORKDIR allows to specify folder for running commands.
 
 ## Images & Containers
@@ -37,9 +37,12 @@
 - Based on one image, we can create multiple containers.
 
 ## Commands
-- `docker build .` - create an image based on Dockerfile.
+- `docker build .` - create an image based on Dockerfile. dot is using for path, where is the dockerfile lives.
 - `docker run image_id` - run container based on image.
   - `-it` - gives ability to interact with soft inside container (node shell fe).
-  - `-p port_number:port_number` - flag that publish port number to a port number.
-- `docker ps` or `docker ps -a` - list of all running containers. `ps` stands for processes and `-a` mean show all.
+  - `-p local_port_number:container_port_number` - flag that publish to local port number from a container port number.
+- `docker ps` - list of all running containers
+- `docker ps -a` :
+  - `ps` stands for processes.
+  - `-a` mean show all.
 - `docker stop container_name` - to stop the container run.

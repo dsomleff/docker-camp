@@ -11,6 +11,7 @@ COPY . /app
 RUN npm install
 
 # let docker know what port shout be expose from container to local system.
+# only for documentation purposes.
 EXPOSE 80
 
 # this line will be executed when container is running.
