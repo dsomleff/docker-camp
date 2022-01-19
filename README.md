@@ -21,8 +21,8 @@
   - `COPY . .` - first dot is all files around Dockerfile. Second dot - where this files should be stored.
 
   - `COPY . /app` - put all code from the root on local machine into container folder named __app__.
-- `RUN` - specify which command should be run inside the container, when image is build. fe `RUN npm install`.
-- `CMD` - this line will be executed when container is running. fe `CMD ["node", "server.js"]`. Without this line CMD of based image will be executed. This line should be ALWAYS the last line in the dockerfile.
+- `RUN` - specify which command should be run inside the container, when image is build. `RUN npm install` e.g..
+- `CMD` - this line will be executed when container is running. `CMD ["node", "server.js"]` e.g.. Without this line CMD of based image will be executed. This line should be ALWAYS the last line in the dockerfile.
 - `EXPOSE` - let docker know what port shout be expose from container to local system. Doesn't do anything. Only for documentation purposes.
 - `WORKDIR` - by default all commands run in the container's root folder. WORKDIR allows to specify folder for running commands.
 
@@ -35,11 +35,12 @@
 - Blueprint for container.
 - Contains the code + requirements tools.
 - Based on one image, we can create multiple containers.
+- Images locked when you build them. App code it's a snapshot which copied into. So Images are Read-Only!
 
 ## Commands
 - `docker build .` - create an image based on Dockerfile. dot is using for path, where is the dockerfile lives.
 - `docker run image_id` - run container based on image.
-  - `-it` - gives ability to interact with soft inside container (node shell fe).
+  - `-it` - gives ability to interact with soft inside container (node shell e.g.).
   - `-p local_port_number:container_port_number` - flag that publish to local port number from a container port number.
 - `docker ps` - list of all running containers
 - `docker ps -a` :
