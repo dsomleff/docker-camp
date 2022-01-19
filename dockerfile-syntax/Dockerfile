@@ -4,11 +4,14 @@ FROM node
 # specify folder inside of the container for running commands.
 WORKDIR /app
 
-# list of files which should go to the image (code base).
-COPY . /app
+# helps to rerun npm install every time when we change the code and build the image.
+COPY package.json /app
 
 # specify which command should be run inside the container, when image is build.
 RUN npm install
+
+# list of files which should go to the image (code base).
+COPY . /app
 
 # let docker know what port shout be expose from container to local system.
 # only for documentation purposes.

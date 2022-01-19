@@ -13,6 +13,7 @@
 
 ## Dockerfile
 `Dockerfile` is a list of instruction for building image, which describe how container should be setup.
+- Every instruction in Dockerfile represent layer. Layer based architecture. More on that in Image section.
 
 >**Syntax:**
 - `FROM` - on top of what technology (based image) we would like to build our image. Without this line you will receive an error.
@@ -36,6 +37,8 @@
 - Contains the code + requirements tools.
 - Based on one image, we can create multiple containers.
 - Images locked when you build them. App code it's a snapshot which copied into. So Images are Read-Only!
+- Every command in Image represent layers and this layers are cached.
+- When Image rebuilds, Docker re-run only the parts that were changed. Non-changeable things are pulling from cache.
 
 ## Commands
 - `docker build .` - create an image based on Dockerfile. dot is using for path, where is the dockerfile lives.
