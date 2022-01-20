@@ -31,22 +31,26 @@
 >**Containers:**
 - Running "unit of software".
 - Run and execute the code.
+- Basically the final layer of the Image, that runs code.
+- Every new container build from the same Image do not copy the code, environment, etc. from that Image. Docker just add another layer above.
 
 >**Images:**
 - Blueprint for container.
-- Contains the code + requirements tools.
+- Contains the code + requirements tools (environment) to run that code.
 - Based on one image, we can create multiple containers.
 - Images locked when you build them. App code it's a snapshot which copied into. So Images are Read-Only!
 - Every command in Image represent layers and this layers are cached.
 - When Image rebuilds, Docker re-run only the parts that were changed. Non-changeable things are pulling from cache.
 
 ## Commands
+- `--help` - add this to any command to figure out available options.
 - `docker build .` - create an image based on Dockerfile. dot is using for path, where is the dockerfile lives.
-- `docker run image_id` - run container based on image.
+- `docker run image_id` - create a NEW container based on image.
   - `-it` - gives ability to interact with soft inside container (node shell e.g.).
   - `-p local_port_number:container_port_number` - flag that publish to local port number from a container port number.
 - `docker ps` - list of all running containers
 - `docker ps -a` :
   - `ps` stands for processes.
   - `-a` mean show all.
+  - `docker start container_name` - restart the existed container.
 - `docker stop container_name` - to stop the container run.
