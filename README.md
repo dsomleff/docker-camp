@@ -47,8 +47,9 @@
 - `docker build .` - create an image based on Dockerfile. dot is using for path, where is the dockerfile lives.
 - `docker run image_id` - create a NEW container based on image. Container running in a foreground (Attached mode). No exit after command execution.
   - `-d` - flag to run container in a Detached mode.
-  - `-it` - gives ability to interact with soft inside container (node shell e.g.).
+  - `-it` - gives ability to interact with soft inside container (node shell e.g.). `i` means interactive mode and `t` means terminal related.
   - `-p local_port_number:container_port_number` - flag that publish to local port number from a container port number.
+  - `--rm` - will delete running container when it stops.
 - `docker ps` - list of all running containers
 - `docker ps -a` :
   - `ps` stands for processes.
@@ -58,3 +59,8 @@
 - `docker stop container_name` - to stop the container run.
 - `docker attach container_name||container_id` - Makes Attached mode on for a container that was started in a Detached mode.
 - `docker logs` - fetches the logs that were printed by container.
+- `docker rm container_name` - remove container. Works only for stopped containers. You can remove a couple containers at once.
+  - `docker container prune` - remove all stopped containers at once.
+- `docker images` - list of all images.
+- `docker rmi image_id` - delete image and all layers inside it. You can't remove image that using by container. So you need remove container first.
+  - `docker image prune` - remove all images.
