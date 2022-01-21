@@ -33,6 +33,7 @@
 - Run and execute the code.
 - Basically the final layer of the Image, that runs code.
 - Every new container build from the same Image do not copy the code, environment, etc. from that Image. Docker just add another layer above.
+- Docker allow us to copy files in/out Container.
 
 ><a name="images"></a>**Images:**
 - Blueprint for container.
@@ -45,15 +46,23 @@
 ## Commands
 - `--help` - add this to any command to figure out available options.
 - `docker build .` - create an image based on Dockerfile. dot is using for path, where is the dockerfile lives.
-- `docker run image_id` - create a NEW container based on image. Container running in a foreground (Attached mode). No exit after command execution.
+  - `-t` - name and tag your image in a name:tag format.
+
+
+- `docker run image_id` - create a NEW container based on image. Container running in a foreground (Attached mode). No exit after command execution. Instead of image_id we can specify image_name:tag.
   - `-d` - flag to run container in a Detached mode.
   - `-it` - gives ability to interact with soft inside container (node shell e.g.). `i` means interactive mode and `t` means terminal related.
   - `-p local_port_number:container_port_number` - flag that publish to local port number from a container port number.
   - `--rm` - will delete running container when it stops.
+  - `--name your_container_name` - give a running container a name.
+
+
 - `docker ps` - list of all running containers
 - `docker ps -a` :
   - `ps` stands for processes.
   - `-a` mean show all.
+
+
 - `docker start container_name` - restart the existed container. Container running in a background (Detached mode). Exit after command execution.
   - `-a` -  flag to run container in a Attached mode.
 - `docker stop container_name` - to stop the container run.
@@ -61,6 +70,9 @@
 - `docker logs` - fetches the logs that were printed by container.
 - `docker rm container_name` - remove container. Works only for stopped containers. You can remove a couple containers at once.
   - `docker container prune` - remove all stopped containers at once.
+
+
 - `docker images` - list of all images.
 - `docker rmi image_id` - delete image and all layers inside it. You can't remove image that using by container. So you need remove container first.
-  - `docker image prune` - remove all images.
+  - `docker image prune` - remove all images with default tag.
+  - `docker image prune -a` - remove ALL images.
