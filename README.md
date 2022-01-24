@@ -76,3 +76,6 @@
 - `docker rmi image_id` - delete image and all layers inside it. You can't remove image that using by container. So you need remove container first.
   - `docker image prune` - remove all images with default tag.
   - `docker image prune -a` - remove ALL images.
+
+
+- `docker tag old_image_name:old_tag(optional) new_image_name:new_tag(optional)` - rename Image.
