@@ -21,4 +21,5 @@ COPY . /app
 EXPOSE 80
 
 # this line will be executed when container is running.
+# you can put any command that you will to execute every time when container runs.
 CMD ["node", "server.js"]
