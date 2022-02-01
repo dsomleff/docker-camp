@@ -2,6 +2,7 @@
 FROM node
 
 # specify folder inside of the container for running commands.
+# you can use . (dot symbol) instead of /app
 WORKDIR /app
 
 # helps to rerun npm install every time when we change the code and build the image.
@@ -11,6 +12,7 @@ COPY package.json /app
 RUN npm install
 
 # list of files which should go to the image (code base).
+# you can use . (dot symbol) instead of /app
 COPY . /app
 
 # let docker know what port shout be expose from container to local system.

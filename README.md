@@ -46,6 +46,7 @@
 
 ## Volumes
 *Allow to store data in containers*.
+Volumes are folders on your local machine, which are made available into containers. It works in both direction: local -> container and container -> local. If container will be removed, volume (data inside volume) survives.
 
 ## Commands
 - `--help` - add this to any command to figure out available options.
