@@ -56,7 +56,7 @@
 - When Image rebuilds, Docker re-run only the parts that were changed. Non-changeable things are pulling from cache.
 
 ## <a name="volumes"></a>Volumes
-*Allow to store data in containers WITHOUT knowing where data stores *.
+*Allow to store data in containers WITHOUT knowing where data stores.*
 - Volumes are folders on your local machine, which are made available into containers. It works in both direction: local -> container and container -> local. If container will be removed, volume (data inside volume) survives.
 - Volume could be anonymous or named. In both cases Docker set up a folder on your local/host machine; exact location is unknown. The only way to find this - use `docker volume` commands.
 - Anonymous volume (including your local folder) will be always deleted after container was removed.
@@ -65,11 +65,12 @@
 - Anonymous Volume removed only when you start / run a container with the `--rm` option. If you start a container without that option, the anonymous volume would NOT be removed, even if you remove the container.
 
 ## <a name="bind"></a>Bind Mounts
-*Allow to store data in containers WITH knowing where data stores *.
+*Allow to store data in containers WITH knowing where data stores*.
 - Developer by himself setup the path/folder for storing data on local/host machine.
 - Bind Mounts great for editable (by you) data (source code).
 - Bind Mount set up not inside Dockerfile, but in the container run command body.
 - Docker should have access to folder on your machine, which you like to share. In Docker app -> Preference -> Recourses -> File Sharing.
+- We can tell Docker to set up some folders inside the container (node_modules e.g.) and use this folder with code on local machine. It can be achieved with Anonymous Volumes + Bind Mounts combination. We can specify required folder in Dockerfile with VOLUME directive or do it manually when we run the container.
 ## <a name="commands"></a>Commands
 >### <a name="comim"></a>Images
 - `--help` - add this to any command to figure out available options.
