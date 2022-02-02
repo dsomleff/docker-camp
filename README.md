@@ -1,6 +1,16 @@
 # Docker Camp
 
-## Containers vs Virtual Machines
+## Table of Contents
+1. [Containers vs Virtual Machines](#cvsvm)
+2. [Dockerfile](#dockerfile)
+3. [Images & Containers](#iac)
+4. [Volumes](#volumes)
+5. [Commands](#commands)
+   - [Images](#comim)
+   - [Containers](#comcon)
+   - [Volumes](#comvol)
+
+## <a name="cvsvm"></a>Containers vs Virtual Machines
 >**Containers:**
 - Low impact on OS, vary fast, minimal disk usage.
 - Sharing, re-building and distribution is easy.
@@ -11,9 +21,9 @@
 - Sharing, re-building and distribution can be challenging.
 - Encapsulate "whole machine" instead of just apps/environment. Included additional extra things.
 
-## Dockerfile
+## <a name="dockerfile"></a> Dockerfile
 `Dockerfile` is a list of instruction for building image, which describe how container should be setup.
-- Every instruction in Dockerfile represent layer. Layer based architecture. More on that in [Images](#images) section.
+- Every instruction in Dockerfile represent layer. Layer based architecture. More on that in [Images & Containers](#iac) section.
 
 >**Syntax:**
 - `FROM` - on top of what technology (based image) we would like to build our image. Without this line you will receive an error.
@@ -27,7 +37,7 @@
 - `EXPOSE` - let docker know what port shout be expose from container to local system. Doesn't do anything. Only for documentation purposes.
 - `WORKDIR` - by default all commands run in the container's root folder. WORKDIR allows to specify folder for running commands.
 
-## Images & Containers
+## <a name="iac"></a>Images & Containers
 >**Containers:**
 - Running "unit of software".
 - Run and execute the code.
@@ -44,15 +54,17 @@
 - Every command in Image represent layers and this layers are cached.
 - When Image rebuilds, Docker re-run only the parts that were changed. Non-changeable things are pulling from cache.
 
-## Volumes
+## <a name="volumes"></a>Volumes
 *Allow to store data in containers*.
 - Volumes are folders on your local machine, which are made available into containers. It works in both direction: local -> container and container -> local. If container will be removed, volume (data inside volume) survives.
 - Volume could be anonymous or named. In both cases Docker set up a folder on your local/host machine; exact location is unknown. The only way to find this - use `docker volume` commands.
 - Anonymous volume (including your local folder) will be always deleted after container was removed.
 - Named volume (including your local folder) will be survive after container was removed.
 - Named volume is great for data which should be persistent and don't need to edit or view directly, because we don't have access to it.
+- Anonymous Volume removed only when you start / run a container with the `--rm` option. If you start a container without that option, the anonymous volume would NOT be removed, even if you remove the container.
 
-## Commands
+## <a name="commands"></a>Commands
+>### <a name="comim"></a>Images
 - `--help` - add this to any command to figure out available options.
 - `docker build .` - create an image based on Dockerfile. dot is using for path, where is the dockerfile lives.
   - `-t` - name and tag your image in a name:tag format.
@@ -65,7 +77,7 @@
 
 - `docker tag old_image_name:old_tag(optional) new_image_name:new_tag(optional)` - rename Image.
 
-
+>### <a name="comcon"></a>Containers
 - `docker run image_id` - create a NEW container based on image. Container running in a foreground (Attached mode). No exit after command execution. Instead of image_id we can specify image_name:tag.
   - `-d` - flag to run container in a Detached mode.
   - `-it` - gives ability to interact with soft inside container (node shell e.g.). `i` means interactive mode and `t` means terminal related.
@@ -88,5 +100,7 @@
 - `docker rm container_name` - remove container. Works only for stopped containers. You can remove a couple containers at once.
   - `docker container prune` - remove all stopped containers at once.
 
-
+>### <a name="comvol"></a>Volumes
 - `-v your_volume_name:/folder_name_inside_container/folder_path` - specified a named volume
+- `docker volume rm VOL_NAME` - remove specific volume
+- `docker volume prune` - remove all volumes
