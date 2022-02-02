@@ -46,7 +46,11 @@
 
 ## Volumes
 *Allow to store data in containers*.
-Volumes are folders on your local machine, which are made available into containers. It works in both direction: local -> container and container -> local. If container will be removed, volume (data inside volume) survives.
+- Volumes are folders on your local machine, which are made available into containers. It works in both direction: local -> container and container -> local. If container will be removed, volume (data inside volume) survives.
+- Volume could be anonymous or named. In both cases Docker set up a folder on your local/host machine; exact location is unknown. The only way to find this - use `docker volume` commands.
+- Anonymous volume (including your local folder) will be always deleted after container was removed.
+- Named volume (including your local folder) will be survive after container was removed.
+- Named volume is great for data which should be persistent and don't need to edit or view directly, because we don't have access to it.
 
 ## Commands
 - `--help` - add this to any command to figure out available options.
@@ -83,3 +87,6 @@ Volumes are folders on your local machine, which are made available into contain
 - `docker logs` - fetches the logs that were printed by container.
 - `docker rm container_name` - remove container. Works only for stopped containers. You can remove a couple containers at once.
   - `docker container prune` - remove all stopped containers at once.
+
+
+- `-v your_volume_name:/folder_name_inside_container/folder_path` - specified a named volume
