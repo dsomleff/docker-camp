@@ -1,5 +1,6 @@
 # Docker Commands Blueprints
 
+## Building an Image
 ```
 docker build - t image-name:image-tag .
 ```
@@ -9,6 +10,7 @@ docker build - t image-name:image-tag .
 
 </br>
 
+## Run Container with Volumes & Bind Mounts (code sharing)
 ```
 docker run -d -p 3000:80 --rm --name container-name -v volume_name:/workdir/shared_folder -v "/path/to/your/project/folder:/workdir" -v /app/node_modules image-name:image-tag
 ```
