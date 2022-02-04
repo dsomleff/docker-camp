@@ -63,6 +63,7 @@
 - Named volume (including your local folder) will be survive after container was removed.
 - Named volume is great for data which should be persistent and don't need to edit or view directly, because we don't have access to it.
 - Anonymous Volume removed only when you start / run a container with the `--rm` option. If you start a container without that option, the anonymous volume would NOT be removed, even if you remove the container.
+- Volumes works in read/write mode, but by using specific syntax, we can make them read only.
 
 ## <a name="bind"></a>Bind Mounts
 *Allow to store data in containers WITH knowing where data stores*.
