@@ -8,7 +8,13 @@ RUN npm install
 
 COPY . /app
 
-EXPOSE 80
+# example of using ARG
+ARG DEFAULT_PORT = 80
+
+# example of using ENV
+ENV PORT $DEFAULT_PORT
+
+EXPOSE $PORT
 
 # specify path to folders (inside container) that should be mapped to some folder outside of container.
 # you can add multiple paths.

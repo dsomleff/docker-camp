@@ -82,7 +82,8 @@ Docker support build-time Arguments and runtime Environments variables.
 
 >ENV
 - Available inside Docker AND application code
-- Set via Dockerfile or `--env` on `docker run`
+- Set via Dockerfile or `--env` on `docker run` or `.env` file
+- Inside Dockerfile we use `ENV` directive
 
 ## <a name="commands"></a>Commands
 >### <a name="comim"></a>Images
