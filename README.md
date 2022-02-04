@@ -6,7 +6,8 @@
 3. [Images & Containers](#iac)
 4. [Volumes](#volumes)
 5. [Bind Mounts](#bind)
-6. [Commands](#commands)
+6. [ARGuments and ENVironment Variables](#arg-env)
+7. [Commands](#commands)
    - [Images](#comim)
    - [Containers](#comcon)
    - [Volumes](#comvol)
@@ -72,6 +73,17 @@
 - Bind Mount set up not inside Dockerfile, but in the container run command body.
 - Docker should have access to folder on your machine, which you like to share. In Docker app -> Preference -> Recourses -> File Sharing.
 - We can tell Docker to set up some folders inside the container (node_modules e.g.) and use this folder with code on local machine. It can be achieved with Anonymous Volumes + Bind Mounts combination. We can specify required folder in Dockerfile with VOLUME directive or do it manually when we run the container.
+
+## <a name="arg-env"></a>ARGuments and ENVironment Variables
+Docker support build-time Arguments and runtime Environments variables.
+>ARGS
+- Available ONLY inside Docker
+- Set on `docker build` via `--build-arg`
+
+>ENV
+- Available inside Docker AND application code
+- Set via Dockerfile or `--env` on `docker run`
+
 ## <a name="commands"></a>Commands
 >### <a name="comim"></a>Images
 - `--help` - add this to any command to figure out available options.
@@ -113,3 +125,6 @@
 - `-v your_volume_name:/folder_name_inside_container/folder_path` - specified a named volume
 - `docker volume rm VOL_NAME` - remove specific volume
 - `docker volume prune` - remove all volumes
+
+
+- `--env-file ./.env` - to run environment variables from .env file.
