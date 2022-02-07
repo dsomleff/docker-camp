@@ -7,7 +7,8 @@
 4. [Volumes](#volumes)
 5. [Bind Mounts](#bind)
 6. [ARGuments and ENVironment Variables](#arg-env)
-7. [Commands](#commands)
+7. [Cross Container Communication](#ccc)
+8. [Commands](#commands)
    - [Images](#comim)
    - [Containers](#comcon)
    - [Volumes](#comvol)
@@ -84,6 +85,11 @@ Docker support build-time Arguments and runtime Environments variables.
 - Available inside Docker AND application code
 - Set via Dockerfile or `--env` on `docker run` or `.env` file
 - Inside Dockerfile we use `ENV` directive
+
+## <a name="ccc"></a>Cross Container Communication
+- We can use CCC to sent requests to 3rd party API, which is not the par of our Container
+- We can communicate with another Container
+- It's a good practice to have multiple Containers for scenario when yoy got app code (1t Container) and DB (2d Container).
 
 ## <a name="commands"></a>Commands
 >### <a name="comim"></a>Images
