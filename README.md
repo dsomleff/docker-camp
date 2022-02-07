@@ -87,9 +87,10 @@ Docker support build-time Arguments and runtime Environments variables.
 - Inside Dockerfile we use `ENV` directive
 
 ## <a name="ccc"></a>Cross Container Communication
-- We can use CCC to sent requests to 3rd party API, which is not the par of our Container
-- We can communicate with another Container
-- It's a good practice to have multiple Containers for scenario when yoy got app code (1t Container) and DB (2d Container).
+- We can use CCC to sent requests to 3rd party API, which is not the par of our Container. That feature works out of the box.
+- We can communicate from COntainer to our local machine (mongoDB installed locally e.g.). For this we should use `host.docker.internal` instead of `localhost` (address) in all links (URL) which is responsible for connection.
+- We can communicate with another Container. Basic solution: grab IP address of Container where we would like to sent a request and use it instead of `localhost` in URL.
+- It's a good practice to have multiple Containers, where every Container focused on an one thing. App code (1t Container) and DB (2d Container) e.g.
 
 ## <a name="commands"></a>Commands
 >### <a name="comim"></a>Images
