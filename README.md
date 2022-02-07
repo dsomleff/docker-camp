@@ -12,6 +12,7 @@
    - [Images](#comim)
    - [Containers](#comcon)
    - [Volumes](#comvol)
+   - [Docker Network](#network)
 
 ## <a name="cvsvm"></a>Containers vs Virtual Machines
 >**Containers:**
@@ -90,6 +91,8 @@ Docker support build-time Arguments and runtime Environments variables.
 - We can use CCC to sent requests to 3rd party API, which is not the par of our Container. That feature works out of the box.
 - We can communicate from COntainer to our local machine (mongoDB installed locally e.g.). For this we should use `host.docker.internal` instead of `localhost` (address) in all links (URL) which is responsible for connection.
 - We can communicate with another Container. Basic solution: grab IP address of Container where we would like to sent a request and use it instead of `localhost` in URL.
+- Docker Network - all Containers can communicate with each other and IPs are automatically resolved.
+- To sent request from one Container to another simply put `Container Name` instead of `localhost` in URL.
 - It's a good practice to have multiple Containers, where every Container focused on an one thing. App code (1t Container) and DB (2d Container) e.g.
 
 ## <a name="commands"></a>Commands
@@ -136,3 +139,7 @@ Docker support build-time Arguments and runtime Environments variables.
 
 
 - `--env-file ./.env` - to run environment variables from .env file.
+
+>### <a name="network"></a>Docker Network
+- `docker network create network_name` - creates a network.
+- `--network network_name` - add this line to `docker run` command to attach Container into Network. Apply this to all Containers that needed for Network.
