@@ -112,7 +112,7 @@ Docker support build-time Arguments and runtime Environments variables.
 >### <a name="comcon"></a>Containers
 - `docker run image_id` - create a NEW container based on image. Container running in a foreground (Attached mode). No exit after command execution. Instead of image_id we can specify image_name:tag.
   - `-d` - flag to run container in a Detached mode.
-  - `-it` - gives ability to interact with soft inside container (node shell e.g.). `i` means interactive mode and `t` means terminal related.
+  - `-it` - gives ability to interact with soft inside container (node shell e.g.). `i` means interactive mode and `t` means terminal related. This flag is ALWAYS should be present when you try to run React App inside of Container.
   - `-p local_port_number:container_port_number` - flag that publish to local port number from a container port number.
   - `--rm` - will delete running container when it stops.
   - `--name your_container_name` - give a running container a name.
