@@ -1,0 +1,8 @@
+version: "3.8" # describe available feature for this version
+services: # list of containers, names it's up to you
+  mongodb:
+    
+  backend:
+    
+  frontend:
+    
