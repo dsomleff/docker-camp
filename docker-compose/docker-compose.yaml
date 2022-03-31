@@ -3,23 +3,40 @@ services: # list of containers, names it's up to you
   mongodb:
     image: 'mongo'
     volumes:
-      - data:data/db
-#    environment: | without env files
-#      - MONGO_INITDB_ROOT_USERNAME=max
-#      - MONGO_INITDB_ROOT_PASSWORD=secret
+      - data:/data/db
+    #environment: | without env files
+      #- MONGO_INITDB_ROOT_USERNAME=max
+     #- MONGO_INITDB_ROOT_PASSWORD=secret
     
-#     MONGO_INITDB_ROOT_USERNAME:max | another option to specify env, 
-#         you don't need dashes in front of the line if you have key:value pairs
+     # MONGO_INITDB_ROOT_USERNAME:max | another option to specify env, 
+         # you don't need dashes in front of the line if you have key:value pairs
     env_file: # with env files
       - ./env/mongo.env
-#     if you would like to have a specifically named network
-#     otherwise docker will create it for you 
+     # if you would like to have a specifically named network
+     # otherwise docker will create it for you 
 #    networks:
-#      - goals-net 
-#  backend:
-#    
+      #- goals-net 
+  backend:
+    build: ./backend # build service based on Dockerfile
+    # long form, you can bind different docker files
+#    build:
+#      context: ./backend
+#      dockerfile: Dockerfile-dev
+#      args:
+#        some-args: 1
+    ports:
+      - '90:90' # host port:container internal port
+    volumes:
+      - logs:/app/logs
+      - ./backend:/app
+      - /app/node_modules
+    env_file:
+      - ./env/backend.env
+    depends_on: 
+      - mongodb
 #  frontend:
 
 # docker should be aware of what volumes it should create for your services 
 volumes: 
   data:
+  logs:
