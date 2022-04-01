@@ -6,6 +6,7 @@ services: # list of containers, names it's up to you
       - data:/data/db
     env_file: # with env files
       - ./env/mongo.env
+    container_name: mongodb # othervise, the name of the container will be {project_folder_name_service_name}
 #   networks: # if you would like to have a specifically named network.
       #- goals-net 
   backend:
