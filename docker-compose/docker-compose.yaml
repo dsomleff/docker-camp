@@ -6,8 +6,7 @@ services: # list of containers, names it's up to you
       - data:/data/db
     env_file: # with env files
       - ./env/mongo.env
-     # if you would like to have a specifically named network.
-#    networks:
+#   networks: # if you would like to have a specifically named network.
       #- goals-net 
   backend:
     build: ./backend # build service based on Dockerfile
@@ -21,9 +20,18 @@ services: # list of containers, names it's up to you
       - ./env/backend.env
     depends_on: 
       - mongodb
-#  frontend:
-
-# docker should be aware of what volumes it should create for your services 
-volumes: 
+  frontend:
+    build: ./frontend
+    environment:
+      NODE_OPTIONS: --openssl-legacy-provider
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend/src:/app/src
+    stdin_open: true # open input connection. = -it flag (interaction mode)
+    tty: true # attach terminal. = -it flag (interaction mode)
+    depends_on: 
+      - backend
+volumes: # docker should be aware of what volumes it should create for your services 
   data:
   logs:
